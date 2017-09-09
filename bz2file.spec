@@ -6,13 +6,14 @@
 #
 Name     : bz2file
 Version  : 0.98
-Release  : 4
+Release  : 5
 URL      : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
 Source0  : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
-Source99 : https://pypi.python.org/packages/61/39/122222b5e85cd41c391b68a99ee296584b2a2d1d233e7ee32b4532384f2d/bz2file-0.98.tar.gz.asc
+Source99 : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz.asc
 Summary  : Read and write bzip2-compressed files.
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: bz2file-legacypython
 Requires: bz2file-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -38,9 +39,18 @@ It contains a drop-in replacement for the file interface in the standard
         
         - Can open files in either text or binary mode.
 
+%package legacypython
+Summary: legacypython components for the bz2file package.
+Group: Default
+
+%description legacypython
+legacypython components for the bz2file package.
+
+
 %package python
 Summary: python components for the bz2file package.
 Group: Default
+Requires: bz2file-legacypython
 
 %description python
 python components for the bz2file package.
@@ -54,12 +64,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503073052
+export SOURCE_DATE_EPOCH=1504998731
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503073052
+export SOURCE_DATE_EPOCH=1504998731
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -70,7 +80,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
