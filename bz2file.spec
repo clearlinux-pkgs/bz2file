@@ -17,7 +17,7 @@ Requires: bz2file-python3
 Requires: bz2file-python
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
