@@ -6,7 +6,7 @@
 #
 Name     : bz2file
 Version  : 0.98
-Release  : 14
+Release  : 15
 URL      : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
 Source0  : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
 Source99 : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz.asc
