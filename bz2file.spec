@@ -6,7 +6,7 @@
 #
 Name     : bz2file
 Version  : 0.98
-Release  : 28
+Release  : 29
 URL      : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
 Source0  : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz
 Source1  : http://pypi.debian.net/bz2file/bz2file-0.98.tar.gz.asc
@@ -18,65 +18,22 @@ Requires: bz2file-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-Bz2file is a Python library for reading and writing bzip2-compressed files.
-
 It contains a drop-in replacement for the file interface in the standard
-library's ``bz2`` module, including features from the latest development
-version of CPython that are not available in older releases.
-
-Bz2file is compatible with CPython 2.6, 2.7, and 3.0 through 3.4, as well as
-PyPy 2.0.
-
-
-Features
---------
-
-- Supports multi-stream files.
-
-- Can read from or write to any file-like object.
-
-- Can open files in either text or binary mode.
-
-- Added methods: ``peek()``, ``read1()``, ``readinto()``, ``fileno()``,
-  ``readable()``, ``writable()``, ``seekable()``.
-
-
-Installation
-------------
-
-To install bz2file, run: ::
-
-   $ pip install bz2file
-
-
-Documentation
--------------
-
-The ``open()`` function and ``BZ2File`` class in this module provide the same
-features and interface as the ones in the standard library's ``bz2`` module in
-the current development version of CPython, `documented here
-<http://docs.python.org/dev/library/bz2.html>`_.
-
-
-Version History
----------------
-
-0.98: 19 January 2014
-
-- Added support for the 'x' family of modes.
-- Ignore non-bz2 data at the end of a file, rather than raising an exception.
-- Tests now pass on PyPy.
-
-0.95: 08 October 2012
-
-- Added the ``open()`` function.
-- Improved performance when reading in small chunks.
-- Removed the ``fileobj`` argument to ``BZ2File()``. To wrap an existing file
-  object, pass it as the first argument (``filename``).
-
-0.9: 04 February 2012
-
-- Initial release.
+        library's ``bz2`` module, including features from the latest development
+        version of CPython that are not available in older releases.
+        
+        Bz2file is compatible with CPython 2.6, 2.7, and 3.0 through 3.4, as well as
+        PyPy 2.0.
+        
+        
+        Features
+        --------
+        
+        - Supports multi-stream files.
+        
+        - Can read from or write to any file-like object.
+        
+        - Can open files in either text or binary mode.
 
 %package python
 Summary: python components for the bz2file package.
@@ -106,12 +63,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582903210
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603388399
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
